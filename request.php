@@ -13,21 +13,19 @@ $output   = getGet("output","");
 
 $_PEAR_default_error_mode=PEAR_ERROR_TRIGGER;
 PEAR::setErrorHandling(PEAR_ERROR_DIE);
-$page=&Page::singleton("categories");
-Page::fetchSlots("categories");
-Page::setSlot('location', sprintf(_("SOAP Anfrage für %s"),$category));
-Page::setSlot('menuleft',    menuleft());
-Page::setSlot('menutop',     "");
-Page::setSlot('menufoot',    sprintf(_("Copyright (c) 2003 %s"),"<a href=\"?content=carsten\">Carsten Bleek</a>"));
+$page=&Page::singleton("");
+$page->fetchSlots("categories");
+$page->setSlot('location', sprintf(_("SOAP Anfrage für %s"),$category));
+$page->setSlot('menuleft',    menuleft());
+$page->setSlot('menutop',     "");
+$page->setSlot('menufoot',    sprintf(_("Copyright (c) 2003 %s"),"<a href=\"?content=carsten\">Carsten Bleek</a>"));
 
 $template_dir="categories/";
 
 // SOAP TEST
 require_once("SOAP/Client.php");
 
-$ini=parse_ini_file("/home/carsten/config/OpenHR.conf");
-
-$endpoint     = $ini["soap.category_server"];
+$endpoint     = $OHR_CONFIG["soap.category"];
 
 $wsdl         = false;
 $portName     = false;
@@ -45,19 +43,24 @@ $options = array('namespace' => 'urn:SOAP_category',
                  'timeout'   => 20);
 
 $data     = $sc->call($method, $params, $options);
+
 $smarty->assign("category",$category);
 $smarty->assign("parent",$parent);
 $smarty->assign("data",$data);
 $smarty->assign("content",$template_dir."request.tpl");
-$smarty->assign("page",Page::getSlots());
+
+#$smarty->assign("page",$page->getSlots());
 
 if ($output=="html"){
-    $smarty->display($template_dir.$category.".tpl");
+     $template=$template_dir.$category.".tpl";
 }else{
     list($soap["request"] ,
          $soap["response"]) = split("INCOMING\n\n",$sc->__get_wire());
     $soap["request"]=substr($soap["request"],11);
     $smarty->assign("SOAP",$soap);
-    $smarty->display($template_dir.'generic.tpl');
+    $template=$template_dir.'generic.tpl';
 }
+
+$page->toHtml(array("template"=>$template));
+
 ?>
