@@ -3,8 +3,8 @@
 // quick webinterface hack in order to click through categories
 
 include_once 'prepend.inc';
-include_once OPENHR_LIB.'/Database.php';
-include_once OPENHR_LIB.'/Category.php';
+include_once OHR_LIB.'Database.php';
+include_once OHR_LIB.'Category.php';
 include_once 'menu.inc';
 
 $category = getGet('category',CAT_LANGUAGE);

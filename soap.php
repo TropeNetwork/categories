@@ -1,5 +1,5 @@
 <?php
-define("FILE_INI", "/home/carsten/config/OpenHR.conf");
+
 define("PEAR_BASE","/home/carsten/external/pear");
 define("OPENHR_LIB","/home/carsten/public_html/jobAdmin/lib");
 

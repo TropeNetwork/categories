@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!-- $Id: package.xml,v 1.1 2003/04/29 14:05:03 cbleek Exp $ -->
+<!DOCTYPE package SYSTEM "../../php4/pear/package.dtd">
+<package version="1.0">
+  <name>oHR_category</name>
+  <summary>
+    oHR_category contains various HR relevant categories 
+  </summary>
+  <description>
+    The oHR_category contains neasted categories for regions, professions,
+    industries, job types, languages, field of studies. It provides a simple
+    API to get categories. 
+  </description>
+  <license>
+    GPL
+  </license>
+  <maintainers>
+    <maintainer>
+      <user>cbleek</user>
+      <role>lead</role>
+      <name>Carsten Bleek</name>
+      <email>carsten@bleek.de</email>
+    </maintainer>
+  </maintainers>
+  <release>
+    <version>0.0.1</version>
+    <state>alpha</state>
+    <date>2003-04-20</date>
+    <notes>initial release</notes>
+    <filelist>
+      <dir name="lib" baseinstalldir="/OpenHR">
+        <file role="php">Category.php</file>
+      </dir>
+      <dir name="db" baseinstalldir="/OpenHR/db">
+        <file role="data">position.dmp.gz</file>
+        <file role="data">region.dmp.gz</file>
+        <file role="data">city.dmp.gz</file>
+        <file role="data">country.dmp.gz</file>
+        <file role="data">continent.dmp.gz</file>
+        <file role="data">language.dmp.gz</file>
+        <file role="data">profession.dmp.gz</file>
+      </dir>
+      <dir name="examples" baseinstalldir="/OpenHR/web/examples">
+        <file role="php">example_category_1.php</file>
+      </dir>
+    </filelist>
+    <deps>
+        <dep type="php" rel="ge" version="4.2.0"/>
+        <dep type="pkg" rel="has">DB</dep>
+        <dep type="pkg" rel="has">oHR_base</dep>
+    </deps>
+  </release>
+</package>

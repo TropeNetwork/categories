@@ -2,16 +2,11 @@
 error_reporting( E_ALL );
 
 /**
- * @const FILE_INI configuration file
- */
-define("FILE_INI", "/home/carsten/config/OpenHR.conf");
-
-/**
  * global array containing all configuration settings
  *
  * @var array $OHR_CONFIG
  */
-$OHR_CONFIG=parse_ini_file(FILE_INI);
+$OHR_CONFIG=parse_ini_file( $_ENV['OHR_CONFIG_FILE'] );
 
 define('DS'            ,  DIRECTORY_SEPARATOR);
 define('OPENHR_BASE'   ,  $OHR_CONFIG["dir.base_openhr"]);
