@@ -49,8 +49,6 @@ $smarty->assign("parent",$parent);
 $smarty->assign("data",$data);
 $smarty->assign("content",$template_dir."request.tpl");
 
-#$smarty->assign("page",$page->getSlots());
-
 if ($output=="html"){
      $template=$template_dir.$category.".tpl";
 }else{
@@ -58,9 +56,10 @@ if ($output=="html"){
          $soap["response"]) = split("INCOMING\n\n",$sc->__get_wire());
     $soap["request"]=substr($soap["request"],11);
     $smarty->assign("SOAP",$soap);
-    $template=$template_dir.'generic.tpl';
+    $template = $template_dir.'generic.tpl';
+    $html     = $smarty->fetch($template_dir.'request.tpl');
+    $page->setSlot("content",$html);
 }
 
-$page->toHtml(array("template"=>$template));
-
+$page->toHtml(array("template"=>$template)); 
 ?>
