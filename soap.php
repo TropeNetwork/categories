@@ -14,6 +14,7 @@ $ss->addObjectMap(new SOAP_category, 'urn:SOAP_category');
 $ss->service($HTTP_RAW_POST_DATA);
 
 class SOAP_category{
+
     function get($category,$parent){
         $cat=new Category;
         return $cat->getChilds($category,$parent);
@@ -23,6 +24,7 @@ class SOAP_category{
         $cat=new Category;
         return $cat->getChilds("language");
     }
+
 }
 
 

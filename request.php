@@ -17,7 +17,7 @@ $page=&Page::singleton("categories");
 Page::fetchSlots("categories");
 Page::setSlot('location', sprintf(_("SOAP Anfrage für %s"),$category));
 Page::setSlot('menuleft',    menuleft());
-Page::setSlot('menutop',     menutop());
+Page::setSlot('menutop',     "");
 Page::setSlot('menufoot',    sprintf(_("Copyright (c) 2003 %s"),"<a href=\"?content=carsten\">Carsten Bleek</a>"));
 
 $template_dir="categories/";
@@ -45,7 +45,6 @@ $options = array('namespace' => 'urn:SOAP_category',
                  'timeout'   => 20);
 
 $data     = $sc->call($method, $params, $options);
-
 $smarty->assign("category",$category);
 $smarty->assign("parent",$parent);
 $smarty->assign("data",$data);
