@@ -31,6 +31,6 @@ require_once(OPENHR_LIB.'/base.php');
 
 define("OHR_MODULE_NAME",'Categories');
 define("OHR_MODULE_PATH",'/categories');
-define("OHR_MODULE_CSS" ,'/jobAdmin/css/project.css');
+define("OHR_MODULE_CSS" ,'/jobAdmin/css/style.css');
 
 ?>
