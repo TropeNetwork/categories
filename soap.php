@@ -12,9 +12,9 @@ $ss->addObjectMap(new SOAP_category, 'urn:SOAP_category');
 $ss->service($HTTP_RAW_POST_DATA);
 
 class SOAP_category{
-    function get($category){
+    function get($category,$parent){
         $cat=new Category;
-        return $cat->getChilds("language");
+        return $cat->getChilds($category,$parent);
     }
 
     function resolve($category,$key){

@@ -1,31 +1,22 @@
 <?php
 
-#error_reporting( E_ALL );
-// SOAP TEST
-require_once("SOAP/Client.php");
+include_once "prepend.inc";
+include_once OPENHR_LIB."/Database.php";
+include_once OPENHR_LIB."/Category.php";
+include_once "menu.inc";
 
-$ini=parse_ini_file("/home/carsten/config/categories.conf");
+$_PEAR_default_error_mode=PEAR_ERROR_TRIGGER;
+PEAR::setErrorHandling(PEAR_ERROR_DIE);
+$page=&Page::singleton("categories");
+Page::fetchSlots("categories");
+Page::setSlot('menuleft',    menuleft());
+Page::setSlot('menutop',     menutop());
+Page::setSlot('menufoot',    sprintf(_("Copyright (c) 2003 %s"),"<a href=\"?content=carsten\">Carsten Bleek</a>"));
 
-$endpoint     = $ini["soap.search_server"];
-
-print "<h1>$endpoint</h1>";
-$wsdl         = false;
-$portName     = false;
-$proxy_params = array();
-
-$sc = new SOAP_Client($endpoint);
-$sc->setErrorHandling(PEAR_ERROR_PRINT);
-
-$method  = 'get';
-$params  = array("category" => "language");
-$options = array('namespace' => 'urn:SOAP_category',
-                 'trace'     => true,
-                 'timeout'   => 10);
-$res     = $sc->call($method, $params, $options);
-
-print "<hr>".$sc->headersOut."</hr><hr>".$sc->headersIn;
-print "<pre>".htmlspecialchars($sc->__get_wire())."</pre>";
-print_r($res);
+$template_dir="categories/";
 
 
+$smarty->assign("content",$template_dir."index.tpl");
+$smarty->assign("page",Page::getSlots());
+$smarty->display($template_dir.'generic.tpl');
 ?>

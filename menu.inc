@@ -9,15 +9,16 @@ function menuleft(){
     $pgmenu         = new HTML_TreeMenu();
     $pgmenu->addItem($pgmenuTop);
     
-    $nx = &$pgmenuTop->addItem(new HTML_TreeNode(array("text" =>_("Languages"), "link" =>'?content=language')));
-    $nx = &$pgmenuTop->addItem(new HTML_TreeNode(array("text"=>_("Regions"), "link"=>'?content=region')));
-    $nx = &$pgmenuTop->addItem(new HTML_TreeNode(array("text"=>_("Professions"), "link"=>'?content=professions')));
-    $nx = &$pgmenuTop->addItem(new HTML_TreeNode(array("text"=>_("Industries"), "link"=>'?content=industries')));
-    $nx = &$pgmenuTop->addItem(new HTML_TreeNode(array("text"=>_("Field of Study"), "link"=>'?content=fieldOfStudy')));
+    $nx = &$pgmenuTop->addItem(new HTML_TreeNode(array("text" =>_("Languages"), "link" =>'request.php?category=language')));
+    $nx = &$pgmenuTop->addItem(new HTML_TreeNode(array("text"=>_("Regions"), "link"=>'request.php?category=continent')));
+    $nx = &$pgmenuTop->addItem(new HTML_TreeNode(array("text"=>_("Professions"), "link"=>'')));
+    $nx = &$pgmenuTop->addItem(new HTML_TreeNode(array("text"=>_("Industries"), "link"=>'')));
+    $nx = &$pgmenuTop->addItem(new HTML_TreeNode(array("text"=>_("Field of Study"), "link"=>'')));
 
     $pgmenuTree = &new HTML_TreeMenu_DHTML($pgmenu,
                                       array('images'       => '/jobs/images/TreeMenu',
-                                            'defaultClass' => 'smalltext'));
+                                            'defaultClass' => 'smalltext',
+                                            'target'       => "_main" ));
     return $pgmenuTree->toHtml();
 }
 
