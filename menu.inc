@@ -3,13 +3,16 @@
 require_once( 'HTML/TreeMenu.php' );
 
 function menuleft(){
+    global $OHR_CONFIG;
 
     $nodeProperties = array("text"=>_("Home"),"link"=> "/", "icon"=>"icons/home.gif");
-    $pgmenu       = new HTML_TreeMenu();
-    $menuTop      = new HTML_TreeNode($nodeProperties);
+    $pgmenu         = new HTML_TreeMenu();
+    $menuTop        = new HTML_TreeNode($nodeProperties);
 
     $pgmenu->addItem($menuTop);
-    $nx = &$menuTop->addItem(new HTML_TreeNode(array("text" =>_("Categories"), "link" =>'/categories')));
+    $nx = &$menuTop->addItem(new HTML_TreeNode(array("text"     => _("Categories"), 
+                                                     "link"     => '/categories',
+                                                     "expanded" => true)));
 
 
 
@@ -20,10 +23,9 @@ function menuleft(){
     $nx->addItem(new HTML_TreeNode(array("text"=>_("Field of Study"), "link"=>'')));
 
     $pgmenuTree = &new HTML_TreeMenu_DHTML($pgmenu,
-                                      array('images'       => '/jobs/images/TreeMenu',
+                                      array('images'       => $OHR_CONFIG["dir.app_jobAdmin"].'/images/TreeMenu',
                                             'defaultClass' => 'smalltext',
-                                            'target'       => "_main" ,
-                                            'expanded'     => true));
+                                            'target'       => "_main"));
     return $pgmenuTree->toHtml();
 }
 

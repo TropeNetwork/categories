@@ -27,7 +27,7 @@ define('OPENHR_LIB'    ,  OPENHR_BASE.DS.'lib'.DS);
  */
 define('OPENHR_LOG'    ,  OPENHR_BASE.DS.'log'.DS);
 
-require_once(OPENHR_LIB.'base.php');
+require_once(OPENHR_LIB.'/base.php');
 
 
 ?>
