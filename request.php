@@ -14,7 +14,6 @@ $output   = getGet("output","");
 $_PEAR_default_error_mode=PEAR_ERROR_TRIGGER;
 PEAR::setErrorHandling(PEAR_ERROR_DIE);
 $page=&Page::singleton("");
-$page->fetchSlots("categories");
 $page->setSlot('location', sprintf(_("SOAP Anfrage für %s"),$category));
 $page->setSlot('menuleft',    menuleft());
 $page->setSlot('menutop',     "");
