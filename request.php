@@ -25,9 +25,9 @@ $template_dir="categories/";
 // SOAP TEST
 require_once("SOAP/Client.php");
 
-$ini=parse_ini_file("/home/carsten/config/categories.conf");
+$ini=parse_ini_file("/home/carsten/config/OpenHR.conf");
 
-$endpoint     = $ini["soap.search_server"];
+$endpoint     = $ini["soap.category_server"];
 
 $wsdl         = false;
 $portName     = false;
