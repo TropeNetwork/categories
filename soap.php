@@ -3,6 +3,8 @@ define("FILE_INI", "/home/carsten/config/jobAdmin.conf");
 define("PEAR_BASE","/home/carsten/public_html/pear");
 define("OPENHR_LIB","/home/carsten/public_html/jobs/lib");
 
+ini_set("include_path",".:".PEAR_BASE);
+
 require_once('SOAP/Server.php');
 require_once(OPENHR_LIB."/Category.php");
 
