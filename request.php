@@ -16,7 +16,7 @@ PEAR::setErrorHandling(PEAR_ERROR_DIE);
 $page=&Page::singleton("");
 $page->setSlot('location', sprintf(_("SOAP Anfrage für %s"),$category));
 $page->setSlot('menuleft',    menuleft());
-$page->setSlot('menutop',     "");
+$page->setSlot('menutop',     menutop());
 $page->setSlot('menufoot',    sprintf(_("Copyright (c) 2003 %s"),"<a href=\"?content=carsten\">Carsten Bleek</a>"));
 
 $template_dir="categories/";
@@ -55,7 +55,7 @@ if ($output=="html"){
          $soap["response"]) = split("INCOMING\n\n",$sc->__get_wire());
     $soap["request"]=substr($soap["request"],11);
     $smarty->assign("SOAP",$soap);
-    $template = $template_dir.'generic.tpl';
+    $template = 'generic.tpl';
     $html     = $smarty->fetch($template_dir.'request.tpl');
     $page->setSlot("content",$html);
 }

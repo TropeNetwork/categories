@@ -16,5 +16,5 @@ $page->setSlot('menufoot',    sprintf(_("Copyright (c) 2003 %s"),"<a href=\"?con
 $template_dir="categories/";
 
 $page->setSlot("content",$smarty->fetch($template_dir.'index.tpl'));
-$page->toHtml(array("template"=>$template_dir.'generic.tpl'));
+$page->toHtml(array("template"=>'generic.tpl'));
 ?>
